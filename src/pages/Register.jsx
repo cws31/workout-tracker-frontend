@@ -17,7 +17,7 @@ export default function Register() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setLoading(true);
@@ -37,12 +37,12 @@ export default function Register() {
 
   return (
     <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-      <div className="bg-slate-800 p-8 rounded-xl border border-slate-700 w-full max-w-md shadow-xl">
+      <div className="bg-slate-800 p-6 sm:p-8 rounded-2xl border border-slate-700 w-full max-w-md shadow-2xl">
         
         {/* Header Icon */}
-        <div className="flex items-center justify-center gap-2 mb-6">
+        <div className="flex items-center justify-center gap-2.5 mb-4">
           <svg 
-            className="h-8 w-8 text-blue-500" 
+            className="h-7 w-7 sm:h-8 sm:w-8 text-blue-500 shrink-0" 
             fill="none" 
             stroke="currentColor" 
             strokeWidth="2" 
@@ -55,17 +55,19 @@ export default function Register() {
             <path d="m2.515 5.343 1.767-1.767a2 2 0 1 1 2.829 2.828L5.343 8.172a2 2 0 1 1-2.828-2.829z" />
             <path d="M6.5 6.5 17.5 17.5" />
           </svg>
-          <h1 className="text-2xl font-bold text-white tracking-wide">Workout Tracker</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+            Workout Tracker
+          </h1>
         </div>
 
-        <h2 className="text-lg font-semibold text-slate-300 text-center mb-6">
+        <h2 className="text-sm sm:text-base font-semibold text-slate-300 text-center mb-6">
           Create a New Account
         </h2>
 
         {/* Error Alert */}
         {error && (
-          <div className="bg-red-950/50 border border-red-800 text-red-400 p-3 rounded-lg mb-4 text-sm flex items-center gap-2">
-            <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-red-950/60 border border-red-800/80 text-red-300 p-3.5 rounded-xl mb-4 text-xs sm:text-sm flex items-center gap-2 shadow-inner">
+            <svg className="w-4 h-4 shrink-0 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" strokeWidth="2" />
               <line x1="12" y1="8" x2="12" y2="12" strokeWidth="2" />
               <line x1="12" y1="16" x2="12.01" y2="16" strokeWidth="2" />
@@ -77,7 +79,9 @@ export default function Register() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-sm font-medium text-slate-300 block mb-1">Full Name</label>
+            <label className="text-xs sm:text-sm font-medium text-slate-300 block mb-1.5">
+              Full Name
+            </label>
             <input
               type="text"
               name="name"
@@ -85,34 +89,38 @@ export default function Register() {
               minLength={4}
               maxLength={30}
               placeholder="John Doe"
-              className="w-full bg-slate-700 border border-slate-600 rounded-lg p-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+              className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition shadow-inner"
               value={formData.name}
               onChange={handleChange}
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-300 block mb-1">Email Address</label>
+            <label className="text-xs sm:text-sm font-medium text-slate-300 block mb-1.5">
+              Email Address
+            </label>
             <input
               type="email"
               name="email"
               required
               placeholder="you@example.com"
-              className="w-full bg-slate-700 border border-slate-600 rounded-lg p-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+              className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition shadow-inner"
               value={formData.email}
               onChange={handleChange}
             />
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-300 block mb-1">Password</label>
+            <label className="text-xs sm:text-sm font-medium text-slate-300 block mb-1.5">
+              Password
+            </label>
             <input
               type="password"
               name="password"
               required
               minLength={8}
               placeholder="Min. 8 characters"
-              className="w-full bg-slate-700 border border-slate-600 rounded-lg p-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+              className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 transition shadow-inner"
               value={formData.password}
               onChange={handleChange}
             />
@@ -121,7 +129,7 @@ export default function Register() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 mt-2"
+            className="w-full bg-blue-600 hover:bg-blue-500 active:scale-[0.99] disabled:opacity-50 text-white py-3.5 rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20 mt-2"
           >
             {loading ? (
               <>
@@ -137,7 +145,7 @@ export default function Register() {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-400">
+        <p className="mt-6 text-center text-xs sm:text-sm text-slate-400">
           Already have an account?{' '}
           <Link to="/login" className="text-blue-400 hover:text-blue-300 font-medium hover:underline">
             Sign In
